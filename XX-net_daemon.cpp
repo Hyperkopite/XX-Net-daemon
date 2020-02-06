@@ -27,7 +27,7 @@ int main()
     replace(time_now, time_now + mx_char, '\n', '\0');
 
     cout << "[?] " << time_now << " | 输入XX-Net-master文件夹路径并按下回车：";
-    cin >> xx_net_path;
+    getline(cin, xx_net_path);
     cmd = "C:\\Windows\\System32\\wscript.exe \"" + xx_net_path + "\\start.vbs\"";
     cout << endl << "您设置的路径是：" << "\"" << xx_net_path << "\\start.vbs\"" << "，请确认该文件是否存在！" << endl << endl;
     system("pause");
