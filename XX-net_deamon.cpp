@@ -14,7 +14,7 @@ using namespace std;
 
 int main()
 {
-    string task;
+    string task, xx_net_path, cmd;
     string file_name = "xx_net_deamon";
     ifstream in;
     FILE* out;
@@ -25,9 +25,16 @@ int main()
 
     ctime_s(time_now, 32, &now);
     replace(time_now, time_now + mx_char, '\n', '\0');
-    cout <<  "[?] " << time_now << " | 设置检查间隔时间（秒）：";
+
+    cout << "[?] " << time_now << " | 输入XX-Net-master文件夹路径并按下回车：";
+    cin >> xx_net_path;
+    cmd = "C:\\Windows\\System32\\wscript.exe \"" + xx_net_path + "\\start.vbs\"";
+    cout << endl << "您设置的路径是：" << "\"" << xx_net_path << "\\start.vbs\"" << "，请确认该文件是否存在！" << endl << endl;
+    system("pause");
+
+    cout << endl << "[?] " << time_now << " | 输入检查间隔时间并按下回车（秒）：";
     cin >> sleep_time;
-    cout << "==========================================================" << endl << endl;
+    cout << "=====================================================================================================" << endl << endl;
     sleep_time *= 1000;
 
     while (1)
@@ -60,7 +67,7 @@ int main()
         if (!is_running)
         {
             cout << "[!] " << time_now << " | XX-Net未运行，正在开启..." << endl << endl;
-            system("C:\\Windows\\System32\\wscript.exe \"D:\\XX-Net-master\\start.vbs\"");
+            system(cmd.c_str());
         }
         in.close();
         Sleep(sleep_time);
