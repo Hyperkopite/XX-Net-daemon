@@ -1,4 +1,4 @@
-# XX-Net-deamon
+# XX-Net-daemon
 
 This program serves as a temporary solution for abnormal crash of XX-Net in recent versions
 </br>本程序可以作为XX-Net异常崩溃的临时解决方法
