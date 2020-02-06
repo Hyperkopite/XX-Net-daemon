@@ -1,5 +1,8 @@
 # XX-Net-deamon
+
 This program serves as a temporary solution for abnormal crash of XX-Net in recent versions
+</br>本程序可以作为XX-Net异常崩溃的临时解决方法
+
 > How to use: 
 
 1) Run the excutable, enter the path of XX-Net-master folder and period of loop check;
