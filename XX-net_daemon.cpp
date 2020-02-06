@@ -15,7 +15,7 @@ using namespace std;
 int main()
 {
     string task, xx_net_path, cmd;
-    string file_name = "xx_net_deamon";
+    string file_name = "xx_net_daemon";
     ifstream in;
     FILE* out;
     bool is_running;
