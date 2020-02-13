@@ -23,7 +23,7 @@ int main()
     char time_now[mx_char] = { '\0' };
     time_t now = time(0);
 
-    ctime_s(time_now, 32, &now);
+    ctime_s(time_now, mx_char, &now);
     replace(time_now, time_now + mx_char, '\n', '\0');
 
     cout << "[?] " << time_now << " | 输入XX-Net-master文件夹路径并按下回车：";
@@ -40,7 +40,7 @@ int main()
     while (1)
     {
         now = time(0);
-        ctime_s(time_now, 32, &now);
+        ctime_s(time_now, mx_char, &now);
         replace(time_now, time_now + mx_char, '\n', '\0');
         is_running = false;
         freopen_s(&out, file_name.c_str(), "w+", stdout);
