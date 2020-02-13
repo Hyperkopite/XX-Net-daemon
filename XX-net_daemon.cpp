@@ -49,11 +49,13 @@ int main()
         freopen_s(&out, "CONOUT$", "w+", stdout);
         _fcloseall();
         in.open(file_name);
+        
         if (!in.is_open())
         {
             cout << "Failed to open!" << endl;
             break;
         }
+        
         in.seekg(0, ios::beg);
         while (getline(in, task))
         {
@@ -64,6 +66,7 @@ int main()
                 break;
             }
         }
+        
         if (!is_running)
         {
             cout << "[!] " << time_now << " | XX-Net未运行，正在开启..." << endl << endl;
