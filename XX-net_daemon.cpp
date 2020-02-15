@@ -9,7 +9,7 @@
 #include <io.h>
 
 #define mx_buf 10000
-#define mx_char 32
+#define mx_char 128
 #define path_num 5
 
 using namespace std;
@@ -22,14 +22,24 @@ ofstream write_to;
 FILE* out;
 bool is_running;
 bool is_set_by_input = false;
+bool is_set_path = false;
 int sleep_time;
 char time_now[mx_char] = { '\0' };
 time_t now = time(0);
 
 void set_path()
 {
-	cmd = "C:\\Windows\\System32\\wscript.exe \"" + xx_net_path + "\\start.vbs\"";
-	cout << endl << "[!] 您设置的路径是：" << "\"" << xx_net_path << "\\start.vbs\"" << "，请确认该文件是否存在！" << endl << endl << "[!] ";
+	string vbs_path = xx_net_path + "\\start.vbs";
+	cmd = "C:\\Windows\\System32\\wscript.exe \"" + xx_net_path + "\\start.vbs\"";	
+	
+	if (_access_s(vbs_path.c_str(), 0) != 0)
+	{
+		system("cls");
+		cout << endl << "[X] 您设置的路径是：" << '\"' << xx_net_path << "\\start.vbs\"，此文件不存在！" << endl << "-----------------------------------------------------------------------------------------------------" << endl;
+		is_set_path = false;
+		return;
+	}
+	cout << endl << "[!] 您设置的路径是：" << '\"' << xx_net_path << "\\start.vbs\"" << endl << endl << "[!] ";
 	system("pause");
 	if (is_set_by_input)
 	{
@@ -37,6 +47,7 @@ void set_path()
 		write_to << xx_net_path << endl;
 		write_to.close();
 	}
+	is_set_path = true;
 }
 
 void get_current_time()
@@ -54,26 +65,31 @@ int get_num_of_lines(string file_name)
 	while (getline(in, buff))
 	{
 		cntr++;
-	}
+	} 
 	return cntr;
 }
 
 int main()
 {
 	int op;
-	if (_access(path_hstry.c_str(), 0) == -1)
+l0:
+	if (_access_s(path_hstry.c_str(), 0) != 0)
 	{
 		get_current_time();
-		cout << "[?] " << time_now << " | 未检测到输入历史，输入XX-Net-master文件夹路径并按下回车：";
+		cout << "[?] " << time_now << " | 未检测到输入历史，输入XX-Net-master文件夹路径并按下回车（例如 D:\\XX-Net-master）：";
 		getline(cin, xx_net_path);
 		is_set_by_input = true;
 		set_path();
+		if (is_set_path == false)
+		{
+			goto l0;
+		}
 	}
 	else
-	{
+	{	
 	l1:
 		in.open(path_hstry);
-		cout << "[?] 选择或输入XX-Net-master文件夹路径：" << endl << endl << "[!] 最近" << path_num << "条输入历史：" << endl << endl << "/////////////////////////////////////////////////////////////////////////////////////////////////////" << endl;
+		cout << "[?] 选择或输入XX-Net-master文件夹路径（例如 D:\\XX-Net-master）：" << endl << endl << "[!] 最近" << path_num << "条输入历史：" << endl << endl << "/////////////////////////////////////////////////////////////////////////////////////////////////////" << endl;
 		if (get_num_of_lines(path_hstry) > path_num)
 		{
 			for (int i = 0; i < get_num_of_lines(path_hstry) - path_num; i++)
@@ -88,7 +104,7 @@ int main()
 		}
 		for (int i = 0; i < path_num; i++)
 		{
-			cout << '[' << i + 1 << "] " << paths[i] << endl << endl;
+			cout << '[' << i + 1 << "] " << paths[i] << endl;
 		}
 		in.close();
 		cout << '[' << path_num + 1 << "] 输入新路径" << endl << "/////////////////////////////////////////////////////////////////////////////////////////////////////" << endl;
@@ -97,7 +113,7 @@ int main()
 		if (cin.fail())
 		{
 			system("cls");
-			cout << "[!] 输入编号有误！" << endl << endl;
+			cout << "[X] 输入编号有误！" << endl << endl;
 			cin.clear();
 			cin.ignore(INT_MAX, '\n');
 			goto l1;
@@ -110,17 +126,25 @@ int main()
 			getline(cin, xx_net_path);
 			is_set_by_input = true;
 			set_path();
+			if (is_set_path == false)
+			{
+				goto l0;
+			}
 		}
 		else if (op >= 1 && op <= path_num)
 		{
 			xx_net_path = paths[op - 1];
 			is_set_by_input = false;
 			set_path();
+			if (is_set_path == false)
+			{
+				goto l0;
+			}
 		}
 		else
 		{
 			system("cls");
-			cout << "[!] 输入编号有误！" << endl << endl; 
+			cout << "[X] 输入编号有误！" << endl << endl; 
 			goto l1;
 		}
 	}
