@@ -29,7 +29,7 @@ time_t now = time(0);
 void set_path()
 {
 	cmd = "C:\\Windows\\System32\\wscript.exe \"" + xx_net_path + "\\start.vbs\"";
-	cout << endl << "您设置的路径是：" << "\"" << xx_net_path << "\\start.vbs\"" << "，请确认该文件是否存在！" << endl << endl;
+	cout << endl << "[!] 您设置的路径是：" << "\"" << xx_net_path << "\\start.vbs\"" << "，请确认该文件是否存在！" << endl << endl << "[!] ";
 	system("pause");
 	if (is_set_by_input)
 	{
@@ -73,7 +73,7 @@ int main()
 	{
 	l1:
 		in.open(path_hstry);
-		cout << "[?] 选择或输入XX-Net-master文件夹路径-最近" << path_num << "条输入历史：" << endl << "-----------------------------------------------------------------------------------------------------" << endl;
+		cout << "[?] 选择或输入XX-Net-master文件夹路径：" << endl << endl << "[!] 最近" << path_num << "条输入历史：" << endl << endl << "/////////////////////////////////////////////////////////////////////////////////////////////////////" << endl;
 		if (get_num_of_lines(path_hstry) > path_num)
 		{
 			for (int i = 0; i < get_num_of_lines(path_hstry) - path_num; i++)
@@ -88,10 +88,10 @@ int main()
 		}
 		for (int i = 0; i < path_num; i++)
 		{
-			cout << '[' << i + 1 << "] " << paths[i] << endl;
+			cout << '[' << i + 1 << "] " << paths[i] << endl << endl;
 		}
 		in.close();
-		cout << '[' << path_num + 1 << "] 输入新路径" << endl << "-----------------------------------------------------------------------------------------------------" << endl;
+		cout << '[' << path_num + 1 << "] 输入新路径" << endl << "/////////////////////////////////////////////////////////////////////////////////////////////////////" << endl;
 		cin >> op;
 		cout << "-----------------------------------------------------------------------------------------------------" << endl;
 		if (cin.fail())
