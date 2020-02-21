@@ -67,9 +67,8 @@ int get_num_of_lines(string file_name)
 	return cntr;
 }
 
-int main()
+void print_banner()
 {
-	int op;
 	cout << "__  ____  __     _   _      _         _                                  " << endl <<
 		"\\ \\/ /\\ \\/ /    | \\ | | ___| |_    __| | ___  __ _ _ __ ___   ___  _ __  " << endl <<
 		" \\  /  \\  /_____|  \\| |/ _ \\ __|  / _` |/ _ \\/ _` | '_ ` _ \\ / _ \\| '_ \\ " << endl <<
@@ -77,10 +76,16 @@ int main()
 		"/_/\\_\\/_/\\_\\    |_| \\_|\\___|\\__|  \\__,_|\\___|\\__,_|_| |_| |_|\\___/|_| |_|" << endl <<
 		"                                                                         " << endl;
 	cout << "v1.3.8 | By MjAxOS43LjI2" << endl << endl;
+}
 
+int main()
+{
+	int op;
+	//print_banner();
 l0:
 	if (_access_s(path_hstry.c_str(), 0) != 0)
 	{
+		print_banner();
 		get_current_time();
 		cout << "[?] " << time_now << " | 未检测到输入历史，输入XX-Net-master文件夹路径并按下回车（例如 D:\\XX-Net-master）：";
 		getline(cin, xx_net_path);
@@ -94,6 +99,7 @@ l0:
 	else
 	{	
 	l1:
+		print_banner();
 		in.open(path_hstry);
 		cout << "[?] 选择或输入XX-Net-master文件夹路径（例如 D:\\XX-Net-master）：" << endl << endl << "[!] 最近" << path_num << "条输入历史：" << endl << endl << "/////////////////////////////////////////////////////////////////////////////////////////////////////" << endl;
 		if (get_num_of_lines(path_hstry) > path_num)
