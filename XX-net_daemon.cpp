@@ -32,13 +32,13 @@ void set_path()
 	
 	if (_access_s(vbs_path.c_str(), 0) != 0)
 	{
+		cout << endl << "[X] 您设置的路径是：" << '\"' << xx_net_path << "\\start.vbs\"，此文件不存在！" << endl << "-----------------------------------------------------------------------------------------------------" << endl << "[!] ";
+		system("pause");
 		system("cls");
-		cout << endl << "[X] 您设置的路径是：" << '\"' << xx_net_path << "\\start.vbs\"，此文件不存在！" << endl << "-----------------------------------------------------------------------------------------------------" << endl;
 		is_set_path = false;
 		return;
 	}
-	cout << "[!] 您设置的路径是：" << '\"' << xx_net_path << "\\start.vbs\"" << endl << endl << "[!] ";
-	system("pause");
+	cout << "[!] 您设置的路径是：" << '\"' << xx_net_path << "\\start.vbs\"" << endl << endl;
 	if (is_set_by_input)
 	{
 		write_to.open(path_hstry, ios::app);
@@ -106,12 +106,14 @@ l0:
 		}
 		in.close();
 		cout << '[' << path_num + 1 << "] 输入新路径" << endl << "/////////////////////////////////////////////////////////////////////////////////////////////////////" << endl;
+		cout << "==> ";
 		cin >> op;
 		cout << "-----------------------------------------------------------------------------------------------------" << endl;
 		if (cin.fail())
 		{
+			cout << "[X] 输入编号有误！" << endl << endl << "[!] ";
+			system("pause");
 			system("cls");
-			cout << "[X] 输入编号有误！" << endl << endl;
 			cin.clear();
 			cin.ignore(INT_MAX, '\n');
 			goto l1;
@@ -141,8 +143,9 @@ l0:
 		}
 		else
 		{
+			cout << "[X] 输入编号有误！" << endl << endl << "[!] "; 
+			system("pause");
 			system("cls");
-			cout << "[X] 输入编号有误！" << endl << endl; 
 			goto l1;
 		}
 	}
