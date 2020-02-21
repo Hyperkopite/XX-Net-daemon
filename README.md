@@ -1,5 +1,12 @@
 # XX-Net-daemon(For Windows only/仅用于Windows)
 
+__  ____  __     _   _      _         _                                  
+\ \/ /\ \/ /    | \ | | ___| |_    __| | ___  __ _ _ __ ___   ___  _ __  
+ \  /  \  /_____|  \| |/ _ \ __|  / _` |/ _ \/ _` | '_ ` _ \ / _ \| '_ \ 
+ /  \  /  \_____| |\  |  __/ |_  | (_| |  __/ (_| | | | | | | (_) | | | |
+/_/\_\/_/\_\    |_| \_|\___|\__|  \__,_|\___|\__,_|_| |_| |_|\___/|_| |_|
+v1.3.8 | By MjAxOS43LjI2                                                                      
+
 This program serves as a temporary solution for abnormal crash of XX-Net in recent versions
 </br>本程序可以作为XX-Net异常崩溃的临时解决方法
 
