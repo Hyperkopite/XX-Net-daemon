@@ -8,7 +8,7 @@ This program serves as a temporary solution for abnormal crash of XX-Net in rece
 1) Run the excutable, enter the path of XX-Net-master folder and period of loop check;
 2) Keep it running in background, it'll automatically check the existence of XX-Net process and relaunch it if crash occurs.
 
-[Note: The program will generate 2 files named "xx_net_daemon" and "path_hstry" under the same directory, please don't delete or modify them in order to assure the function of program!]
+[Note: The program will generate 2 files named "xx_net_daemon" and "path_hstry" under the same directory, please don't delete or modify them in order to guarantee the function of program!]
 
 
 
