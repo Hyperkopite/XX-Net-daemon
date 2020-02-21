@@ -1,4 +1,4 @@
-# XX-Net-daemon
+# XX-Net-daemon(For Windows only/仅用于Windows)
 
 This program serves as a temporary solution for abnormal crash of XX-Net in recent versions
 </br>本程序可以作为XX-Net异常崩溃的临时解决方法
