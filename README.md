@@ -18,3 +18,5 @@ This program serves as a temporary solution for abnormal crash of XX-Net in rece
 2) 保持程序后台运行，程序会自动检查XX-Net进程是否存在，如果XX-Net崩溃会自动重启！
 
 【注意：程序会在当前目录下生成“xx_net_daemon”，“path_hstry”两个文件，请勿删除或修改以保证程序正常运行！】
+
+![Alt Text](https://github.com/Hyperkopite/XX-Net-daemon/blob/master/s1.png)
