@@ -20,9 +20,7 @@ string paths[path_num] = { "" };
 ifstream in;
 ofstream write_to;
 FILE* out;
-bool is_running;
-bool is_set_by_input = false;
-bool is_set_path = false;
+bool is_running = false, is_set_by_input = false, is_set_path = false, is_blocked = false;
 int sleep_time;
 char time_now[mx_char] = { '\0' };
 time_t now = time(0);
@@ -39,7 +37,7 @@ void set_path()
 		is_set_path = false;
 		return;
 	}
-	cout << endl << "[!] 您设置的路径是：" << '\"' << xx_net_path << "\\start.vbs\"" << endl << endl << "[!] ";
+	cout << "[!] 您设置的路径是：" << '\"' << xx_net_path << "\\start.vbs\"" << endl << endl << "[!] ";
 	system("pause");
 	if (is_set_by_input)
 	{
@@ -175,9 +173,13 @@ l0:
 			if (task.find("pythonw.exe") != string::npos)
 			{
 				is_running = true;
-				get_current_time();
-				cout << "[+] " << time_now << " | XX-Net运行中..." << endl << endl;
-				break;
+				if (!is_blocked)
+				{
+					get_current_time();
+					cout << "[+] " << time_now << " | XX-Net运行中..." << endl << endl;
+					is_blocked = true;
+					break;
+				}
 			}
 		}
 		if (!is_running)
@@ -185,6 +187,7 @@ l0:
 			get_current_time();
 			cout << "[!] " << time_now << " | XX-Net未运行，正在开启..." << endl << endl;
 			system(cmd.c_str());
+			is_blocked = false;
 		}
 		in.close();
 		Sleep(sleep_time);
